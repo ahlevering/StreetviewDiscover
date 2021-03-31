@@ -95,8 +95,9 @@ class DatabaseHandler():
     _table_selected = staticmethod(_table_selected)
 
 class StreetviewDB(DatabaseHandler):
-    def __init__(self, db_root):
+    def __init__(self, db_root, verbose=False):
         super().__init__(db_root)
+        self.verbose=verbose
 
     def make_region_table(self, table_name, set_target=False):
         """Makes a table to store streetview panorama information for a given region
@@ -152,7 +153,7 @@ class StreetviewDB(DatabaseHandler):
                 self.db.commit()
         except Exception as e:
             self.db.rollback()
-            if 'UNIQUE constraint failed' in str(e):
+            if 'UNIQUE constraint failed' in str(e) and self.verbose=True:
                 print(f'Duplicate entry for pano {entry["pano_id"]} ignored.')
             else:
                 raise e
