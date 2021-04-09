@@ -1,4 +1,5 @@
 import sqlite3
+import pandas as pd
 
 class DatabaseHandler():
     """IMPORTANT NOTE: Don't use this code in production without cleaning inputs!
