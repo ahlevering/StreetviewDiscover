@@ -80,7 +80,7 @@ class DatabaseHandler():
             for i,header in enumerate(headers):
                 pandas_dict[header[1]] = [row[i] for row in records]
             table_df = pd.DataFrame(pandas_dict)
-            table_df['capture_date'].apply(lambda x: pd.to_datetime(str(x), format='%Y%m%'))
+            table_df['capture_date'] = table_df['capture_date'].apply(lambda x: pd.to_datetime(str(x), format='%Y%m%'))
             table_df.infer_objects()
             return table_df
         except sqlite3.IntegrityError as e:
