@@ -33,9 +33,10 @@ grid_resolution = 20 # Set this value to 200 if you want to quickly verify that 
 in_proj = 'EPSG:28992' # RD New, the national Dutch coordinate system
 
 ## Get previously-queried regions from database
-recorded_pcs = list(set([rec[0] for rec in sv_db.get_records()]))
+queried_panos = sv_db.get_records()
+recorded_pcs = set(queried_panos['subregion_name'])
 
-# This can take a while to run as it needs to query the API many times for each polygon
+# This can take a while to run as it needs to query the API many times for each sample point
 for _,row in pc4_polys.iterrows():
     if not row['postcode'] in recorded_pcs: # Ignore previously handled postcodes
         print(row['postcode'])

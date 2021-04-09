@@ -7,17 +7,17 @@ import streetview
 from svdiscover.database import StreetviewDB
 
 # Get records
-sv_db_path = 'output/sv_imgs.sqlite'
+sv_db_path = 'output/sv_imgs_ams.sqlite'
 sv_db = StreetviewDB(sv_db_path)
-sv_db.table = 'postcodes_ams'
-all_records = [rec for rec in sv_db.get_records()]
+sv_db.table = 'postcodes'
+all_records = sv_db.get_records()
 
 
 # Download panoramas
 my_google_api_key = '' # This is necessary for downloading. See the read-me on how to acquire a key.
 
-for record in all_records:
+for i,record in all_records.iterrows():
     heading = '' # By default: Gets forward-facing perspective
     
     # By default, Panoramas are saved by their year & pano-id
-    streetview.api_download(record[1], heading, 'output/images/', my_google_api_key)
+    streetview.api_download(record['pano_id'], heading, 'output/images/', my_google_api_key)
