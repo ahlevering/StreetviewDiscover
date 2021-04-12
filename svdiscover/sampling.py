@@ -1,13 +1,11 @@
-from datetime import date
 from time import sleep
 from math import floor, ceil
 
 import streetview
-import numpy as np
+import geopandas as gpd
 from pyproj import Proj, CRS, Transformer
-from shapely.geometry import Point, MultiPoint
+from shapely.geometry import MultiPoint
 from shapely.ops import transform
-
 
 def sample_pts_in_poly(poly_geom, grid_resolution=20):
     """Creates a point every n meters in a regular grid set by the grid resolution.
@@ -105,4 +103,4 @@ def panos_from_coord_pair(sample_pt, subregion_name=''):
                             'download_date': '',
                             'saved_path': ''}
                 entries.append(entry)
-    return entries        
+    return entries
