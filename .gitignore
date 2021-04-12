@@ -1,0 +1,14 @@
+# Spam & Trash
+*.pyc
+./tmp
+.ipynb_checkpoints
+.vscode
+__pycache__/
+*.egg-info
+
+# Data io
+source/*
+output/*
+logs/*
+*.log
+
