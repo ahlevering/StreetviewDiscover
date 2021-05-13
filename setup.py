@@ -6,7 +6,7 @@ def readme():
 
 setup(
     name='svdiscover',
-    version='0.2.2',
+    version='0.2.3',
     description='Simple functions for discovering current and historic Google Streetview panorama IDs in polygons of a given region',
     long_description=readme(),
     url='https://github.com/Bixbeat/streetview-discover',
